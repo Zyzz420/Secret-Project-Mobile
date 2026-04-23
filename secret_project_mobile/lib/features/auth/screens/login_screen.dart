@@ -44,7 +44,16 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         );
 
-        context.go('/tenant-dashboard');
+        // ✅ Scalable role-based navigation
+        final roleRoutes = {
+          'tenant': '/tenant-dashboard',
+          'landlord': '/caretaker-dashboard',
+          'admin': '/caretaker-dashboard',
+          'caretaker': '/caretaker-dashboard',
+        };
+
+        final route = roleRoutes[role] ?? '/tenant-dashboard';
+        context.go(route);
       }
     } catch (e) {
       if (mounted) {
@@ -58,6 +67,13 @@ class _LoginScreenState extends State<LoginScreen> {
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override

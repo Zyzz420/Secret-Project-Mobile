@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:secret_project_mobile/features/caretaker_panel/screens/caretaker_dashboard.dart';
 import '../../features/auth/screens/splash_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/tenant_portal/screens/tenant_dashboard.dart';
@@ -23,6 +24,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/ocr-scanner',
       builder: (context, state) => const OcrScannerScreen(),
+    ),
+    GoRoute(
+      path: '/caretaker-dashboard',
+      builder: (context, state) => const CaretakerDashboard(),
     ),
     GoRoute(
       path: '/report-issue',
